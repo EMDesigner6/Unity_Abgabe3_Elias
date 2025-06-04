@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class UI_Manager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textZählerPunkte;
+    [SerializeField] private TextMeshProUGUI textZählerZeit;
 
     [SerializeField] private GameObject panelLost;
     [SerializeField] private GameObject panelWin;
     [SerializeField] private GameObject panelMenu;
-
+    [SerializeField] private GameObject panelPlay
+        ;
     [SerializeField] private Button buttonNeustartLevel;
+    [SerializeField] private Button buttonStartLevel;
    private  void Start()
     {
         panelLost.SetActive(false);
         panelWin.SetActive(false);
         panelMenu.SetActive(false);
+        panelPlay.SetActive(false);
 
         buttonNeustartLevel.onClick.AddListener(NeustartLevel);
     }
@@ -32,20 +36,31 @@ public class UI_Manager : MonoBehaviour
     }
     public void ShowPanelLost()         // Das Progamm ShowPanelLost 
     {
-        panelLost.SetActive(true);      // Der PanelLost gezeigt soll (Richtig)
-        panelWin.SetActive(false);      // Der PanelWin gezeigt soll (Falsch)
-        panelMenu.SetActive(false);     // Der PanelMenu gezeigt soll (Richtig)
+        panelLost.SetActive(true);      // Der PanelLost gezeigt soll Aktivierten (Wahr)
+        panelWin.SetActive(false);      // Der PanelWin gezeigt soll Aktivierten (Falsch)
+        panelMenu.SetActive(false);     // Der PanelMenu gezeigt soll Aktivierten (Falsch)
+        panelPlay.SetActive(false);      // Der PanelPlay gezeigt soll Aktivierten (Falsch)
     }
     public void ShowPanelWin()          // Das Progamm ShowPanelWin
     {
-        panelLost.SetActive(false);     // Der PanelLost gezeigt soll (Falsch)
-        panelWin.SetActive(true);       // Der PanelWin gezeigt soll (Richtig)
-        panelMenu.SetActive(false);     // Der PanelMenu gezeigt soll (Falsch)
+        panelLost.SetActive(false);     // Der PanelLost gezeigt soll Aktivierten (Falsch)
+        panelWin.SetActive(true);       // Der PanelWin gezeigt soll Aktivierten (Wahr)
+        panelMenu.SetActive(false);     // Der PanelMenu gezeigt soll Aktivierten (Falsch)
+        panelPlay.SetActive(false);     // Der PanelPlay gezeigt soll Aktivierten (Falsch)
     }
     public void ShowPanelMenu()         // Das Progamm ShowPanelMenu
     {
-        panelLost.SetActive(false);     // Der PanelLost gezeigt soll (Falsch)
-        panelWin.SetActive(false);      // Der PanelWin gezeigt soll (Falsch)
-        panelMenu.SetActive(true);      // Der PanelMenu gezeigt soll (Richtig)
+        panelLost.SetActive(false);     // Der PanelLost gezeigt soll Aktivierten(Falsch)
+        panelWin.SetActive(false);      // Der PanelWin gezeigt soll Aktivierten(Falsch)
+        panelMenu.SetActive(true);      // Der PanelMenu gezeigt soll Aktivierten(Wahr)
+        panelPlay.SetActive(false);     // Der PanelPlay gezeigt soll Aktivierten (Falsch)
+    }
+    public void ShowPanelPlay()         // Das Progamm ShowPanelMenu
+    {
+        panelLost.SetActive(false);     // Der PanelLost gezeigt soll Aktivierten (Falsch)
+        panelWin.SetActive(false);      // Der PanelWin gezeigt  soll Aktivierten (Falsch)
+        panelMenu.SetActive(false);     // Der PanelMenu gezeigt soll Aktivierten (Falsch)
+        panelPlay.SetActive(true);      // Der PanelPlay gezeigt soll Aktivierten (Wahr)
     }
 }
+

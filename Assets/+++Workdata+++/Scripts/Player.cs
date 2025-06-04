@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;                  // Ein Feld für  Geschwindichkeit gelich 5
-    [SerializeField] float hüpfen = 10f;                         // Ein Feld für  Hüpfen gelich 3
+    [SerializeField] float hüpfen = 10f;                        // Ein Feld für  Hüpfen gleich 10
 
-    private float direction = 0f;
+    private float direction = 0f;                               // Der als float definierte direction ist gleich 0
 
     private Rigidbody2D rb;
 
@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+
     }
 
 
@@ -78,20 +80,24 @@ public class Player : MonoBehaviour
 
 
         }
-        else if (other.CompareTag("Hindernisse"))    // Kommwnteierrt werden "Hindernisse"
+        else if (other.CompareTag("Hindernisse"))   // Kommwnteierrt werden "Hindernisse"
         {
             ui_Manager.ShowPanelLost();             // ui:Manager soll Programm ShowPanelLost ausführen
             rb.linearVelocity = Vector2.zero;       // der rb soll gleich Vector2D Null
             KannBewegen = false;                    // KannBewegen ist gelich Falsch
 
         }
-        else if (other.CompareTag("Diamanten"))             // wenn Punkte berüht wird
+        else if (other.CompareTag("Diamanten"))     // wenn Punkte berüht wird
         {
-            Debug.Log("Diamanten");                     // Kommwnteiert werden "Münze"
+            Debug.Log("Diamanten");                 // Kommwnteiert werden "Münze"
             Destroy(other.gameObject);              // Zerstöre das Besagt Gameo
             punkteManager.Hinzufügen();             // Programm von punkteManager Hinzufügen ausführen
 
         }
+
+    }
+    void BevorStarte()
+    {
 
     }
 }
