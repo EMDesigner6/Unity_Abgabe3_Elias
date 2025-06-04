@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textZählerPunkte;
-    [SerializeField] private TextMeshProUGUI textZählerZeit;
+    [SerializeField] private Text textZählerPunkte;
+    [SerializeField] private Text textZählerZeit;
 
     [SerializeField] private GameObject panelLost;
     [SerializeField] private GameObject panelWin;
