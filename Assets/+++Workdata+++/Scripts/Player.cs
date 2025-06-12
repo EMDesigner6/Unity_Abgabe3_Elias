@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;                  // Ein Feld für  Geschwindichkeit gelich 5
-    [SerializeField] float hüpfen = 10f;                        // Ein Feld für  Hüpfen gleich 10
+    [SerializeField] private float speed = 5f;                  // Ein Feld einfügen für Geschwindichkeit gelich 5
+    [SerializeField] float hüpfen = 10f;                        // Ein Feld einfügen für Hüpfen gleich 10
 
     private float direction = 0f;                               // Der als float definierte direction ist gleich 0
 
@@ -12,16 +13,16 @@ public class Player : MonoBehaviour
 
     [Header("BodenChecker")]
 
-    [SerializeField] private Transform transformBodenChecker;   // Ein Feld für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker;   // Ein Feld einfügen für Transform der transformBodenChecker
 
-    [SerializeField] private LayerMask LayerBoden;              // Ein Feld für Layermask für den LayerBoden
+    [SerializeField] private LayerMask LayerBoden;              // Ein Feld einfügen für Layermask für den LayerBoden
 
     [Header("Manager")]
 
-    [SerializeField] private Punkte_Manager punkteManager;      // Ein Feld für Punkte_Manager 
-    [SerializeField] private UI_Manager ui_Manager;             // Ein Feld für UI_Manager
+    [SerializeField] private Punkte_Manager punkteManager;      // Ein Feld einfügen für Punkte_Manager 
+    [SerializeField] private UI_Manager ui_Manager;             // Ein Feld einfügen für UI_Manager
 
-    private bool KannBewegen = true;                            // ein bool KannBewegen gleich Wahr,
+    private bool KannBewegen = true;                            // ein bool einfügen name KannBewegen gleich Wahr
 
     void Start()
     {
@@ -37,13 +38,13 @@ public class Player : MonoBehaviour
         {
             direction = 0f;                                     //Zum Stoppen, Bewegungslos
 
-            if (Keyboard.current.aKey.isPressed)                // Drücke ich die Taste A ,dann
+            if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))                // Drücke ich die Taste A ,dann
             {
                 direction = -1;                                 // Nach Links 
                 Debug.Log("Nach Links");
             }
 
-            if (Keyboard.current.dKey.isPressed)                // Drücke ich die Taste D ,dann
+            if (UnityEngine.Input.GetKey(KeyCode.RightArrow))                // Drücke ich die Taste D ,dann
             {
                 direction = 1;                                  // Nach Rechts 
                 Debug.Log("Nach Rechts");
@@ -55,7 +56,14 @@ public class Player : MonoBehaviour
                 Debug.Log("Nach Oben");
             }
 
+           /* if (Input.GetKey(KeyCode.Escape))
+            {
+                ui_Manager.ShowPanelMenu();
+            }*/
+
             rb.linearVelocity = new Vector2(x: direction * speed, rb.linearVelocity.y);
+
+
         }
     }
 
@@ -101,3 +109,31 @@ public class Player : MonoBehaviour
 
     }
 }
+/*Für PfeilTasten Steuerung
+    void Update()
+    {
+        // Detect Up Arrow
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            Debug.Log("Up Arrow Pressed");
+        }
+
+        // Detect Down Arrow
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            Debug.Log("Down Arrow Pressed");
+        }
+
+        // Detect Left Arrow
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Debug.Log("Left Arrow Pressed");
+        }
+
+        // Detect Right Arrow
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Debug.Log("Right Arrow Pressed");
+        }
+    }
+} */
