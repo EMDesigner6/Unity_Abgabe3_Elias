@@ -5,7 +5,7 @@ public class Punkte_Manager : MonoBehaviour
     [SerializeField] private int ZählerPunkte = 0;      // Ein Feld einfügen für ZählerPunkte gleich 0
     [SerializeField] private UI_Manager ui_Manager;     // Ein Feld einfügen für UI_Manager als ui_Manager
 
-    // Update is called once per frame
+ 
     private void Start()
     {
         ZählerPunkte = 0;                               // Der Zähler soll gelich = 0

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private float direction = 0f;                               // Der als float definierte direction ist gleich 0
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb;                                     // Der als private definierte Rigidbody ist rb
 
     [Header("BodenChecker")]
 
@@ -41,25 +41,24 @@ public class Player : MonoBehaviour
             if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))                // Drücke ich die Taste A ,dann
             {
                 direction = -1;                                 // Nach Links 
-                Debug.Log("Nach Links");
+            
             }
 
             if (UnityEngine.Input.GetKey(KeyCode.RightArrow))                // Drücke ich die Taste D ,dann
             {
                 direction = 1;                                  // Nach Rechts 
-                Debug.Log("Nach Rechts");
+               
             }
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame)  // Drücke ich die Leertaste ,dann
             {
                 Springen();                                     // Programm Springen ausführen 
-                Debug.Log("Nach Oben");
-            }
-
-           /* if (Input.GetKey(KeyCode.Escape))
+            }else 
+            if (Keyboard.current.hKey.isPressed)
             {
+                KannBewegen = false;
                 ui_Manager.ShowPanelMenu();
-            }*/
+            }
 
             rb.linearVelocity = new Vector2(x: direction * speed, rb.linearVelocity.y);
 
@@ -100,13 +99,19 @@ public class Player : MonoBehaviour
             Debug.Log("Diamanten");                 // Kommwnteiert werden "Münze"
             Destroy(other.gameObject);              // Zerstöre das Besagt Gameo
             punkteManager.Hinzufügen();             // Programm von punkteManager Hinzufügen ausführen
-
+            rb.linearVelocity = Vector2.zero;       // der rb soll gleich Vector2D Null [Stoppen]
+            ui_Manager.ShowPanelWin(); 
         }
 
     }
-    void BevorStarte()
+    public void NichtBewegen()
     {
-
+        KannBewegen = false;
+        new Vector2(x: 0, y: 0);
+    }
+    public void Bewegen()
+    {
+        KannBewegen = true;
     }
 }
 /*Für PfeilTasten Steuerung
