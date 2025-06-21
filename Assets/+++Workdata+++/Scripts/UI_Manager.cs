@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class UI_Manager : MonoBehaviour
 {
-    [SerializeField] private Text textZählerPunkte;   
+    [SerializeField] private TextMeshProUGUI textZählerPunkte;   
     // Ein Feld einfügen als Text für textZählerPunkte
     [SerializeField] private GameObject panelLost;          // Ein Feld einfügen als GameObjekt für panelLost 
     [SerializeField] private GameObject panelWin;           // Ein Feld einfügen als GameObjekt für panelWin
@@ -18,13 +18,12 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private Button buttonNeustartLevelW;    // Ein Feld einfügen als Button für buttonNeustartLevel
     [SerializeField] private Button buttonStartLevel;       // Ein Feld einfügen als Button für buttonStartLevel
     [SerializeField] private Button buttonNeustartLevelL;
-    [SerializeField] private Button Highscore;
 
     [SerializeField] private int StartTime = 3;
     [SerializeField] private TextMeshProUGUI textCounter;
     [SerializeField] private Player player;
 
-    [SerializeField] private GameObject GameObecjtWithScript;
+  
 
     private void Start()
     {
@@ -34,7 +33,6 @@ public class UI_Manager : MonoBehaviour
         buttonNeustartLevelW.onClick.AddListener(NeustartLevel);     //buttonNeustartLevel geklickt wird dann soll Varaible NeustartLevel ausgeführt werden
         buttonStartLevel.onClick.AddListener(StartLevel);           //buttonStartLevel geklickt wird dann soll Varaible StartLevel ausgeführt werden
         buttonNeustartLevelL.onClick.AddListener(NeustartLevel);
-        Highscore.onClick.AddListener(ShowPanelWin);
     }
     public void NeustartLevel()
     {
@@ -92,7 +90,7 @@ public class UI_Manager : MonoBehaviour
         panelCounter.SetActive(false);  // Der PanelCounter gezeigt soll Aktivierten (Falsch)
         player.Bewegen();    
     }
-    public void ShowPanelCounter()         // Das Progamm ShowPanelMenu
+    public void ShowPanelCounter()         // Das Progamm ShowPanelCounter
     {
         panelLost.SetActive(false);     // Der PanelLost gezeigt soll Aktivierten (Falsch)
         panelWin.SetActive(false);      // Der PanelWin gezeigt  soll Aktivierten (Falsch)

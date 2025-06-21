@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
             }else 
             if (Keyboard.current.hKey.isPressed)
             {
-                KannBewegen = false;
+                NichtBewegen();
                 ui_Manager.ShowPanelMenu();
             }
 
