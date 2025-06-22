@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Time_Manager : MonoBehaviour
 {
-    [SerializeField] private float YourTime = 0;
+    [SerializeField] private float YourTime = 0;            // Ein Feld als float YourTime gleich 0;
     [SerializeField] private TextMeshProUGUI Zaehler;
     private bool isCounterDone;
   

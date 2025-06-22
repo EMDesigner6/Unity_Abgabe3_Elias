@@ -14,6 +14,12 @@ public class Player : MonoBehaviour
     [Header("BodenChecker")]
 
     [SerializeField] private Transform transformBodenChecker;   // Ein Feld einfügen für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker1;   // Ein Feld einfügen für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker2;   // Ein Feld einfügen für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker3;   // Ein Feld einfügen für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker4;   // Ein Feld einfügen für Transform der transformBodenChecker
+    [SerializeField] private Transform transformBodenChecker5;   // Ein Feld einfügen für Transform der transformBodenChecker
+
 
     [SerializeField] private LayerMask LayerBoden;              // Ein Feld einfügen für Layermask für den LayerBoden
 
@@ -40,36 +46,60 @@ public class Player : MonoBehaviour
 
             if (UnityEngine.Input.GetKey(KeyCode.LeftArrow))                // Drücke ich die Taste A ,dann
             {
-                direction = -1;                                 // Nach Links 
-            
+                direction = -1;        
+                // Nach Links 
             }
 
             if (UnityEngine.Input.GetKey(KeyCode.RightArrow))                // Drücke ich die Taste D ,dann
             {
-                direction = 1;                                  // Nach Rechts 
-               
+                direction = 1;      
+                // Nach Rechts 
             }
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame)  // Drücke ich die Leertaste ,dann
             {
-                Springen();                                     // Programm Springen ausführen 
-            }else 
+                Springen();
+                // Programm Springen ausführen 
+            }
+            else/*
             if (Keyboard.current.hKey.isPressed)
             {
                 NichtBewegen();
                 ui_Manager.ShowPanelMenu();
-            }
-
+            }*/
             rb.linearVelocity = new Vector2(x: direction * speed, rb.linearVelocity.y);
 
-
         }
+
+
     }
+
+
 
     void Springen()
 
     {
-        if (Physics2D.OverlapCircle(transformBodenChecker.position, 0.3f, LayerBoden))
+        if (Physics2D.OverlapCircle(transformBodenChecker.position, 0.3f, LayerBoden)) // Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher.position gleich 0.3f, dem LayerBoden berührt))
+        {
+            rb.linearVelocity = new Vector2(x: 0, y: hüpfen);                           // Dann soll der rb.linearVelocity gleich einen neuen Vector zu x: 0, y: hüpfen)
+        }
+        if (Physics2D.OverlapCircle(transformBodenChecker1.position, 0.3f, LayerBoden))// Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher1.position gleich 0.3f, dem LayerBoden berührt))
+        {
+            rb.linearVelocity = new Vector2(x: 0, y: hüpfen);
+        }
+        if (Physics2D.OverlapCircle(transformBodenChecker2.position, 0.3f, LayerBoden))// Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher2.position gleich 0.3f, dem LayerBoden berührt))
+        {
+            rb.linearVelocity = new Vector2(x: 0, y: hüpfen);
+        }
+        if (Physics2D.OverlapCircle(transformBodenChecker3.position, 0.3f, LayerBoden))// Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher3.position gleich 0.3f, dem LayerBoden berührt))
+        {
+            rb.linearVelocity = new Vector2(x: 0, y: hüpfen);
+        }
+        if (Physics2D.OverlapCircle(transformBodenChecker4.position, 0.3f, LayerBoden))// Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher4.position gleich 0.3f, dem LayerBoden berührt))
+        {
+            rb.linearVelocity = new Vector2(x: 0, y: hüpfen);
+        }
+        if (Physics2D.OverlapCircle(transformBodenChecker5.position, 0.3f, LayerBoden))// Wenn (Physics2D.der OverlapCircle(mit dem transformBodenChecher5.position gleich 0.3f, dem LayerBoden berührt))
         {
             rb.linearVelocity = new Vector2(x: 0, y: hüpfen);
         }
@@ -81,7 +111,7 @@ public class Player : MonoBehaviour
 
         if (other.CompareTag("Punkte"))             // wenn Punkte berüht wird
         {
-            Debug.Log("Münze");                     // Kommwnteiert werden "Münze"
+
             Destroy(other.gameObject);              // Zerstöre das Besagt Gameo
             punkteManager.Hinzufügen();             // Programm von punkteManager Hinzufügen ausführen
 
@@ -96,22 +126,21 @@ public class Player : MonoBehaviour
         }
         else if (other.CompareTag("Diamanten"))     // wenn Punkte berüht wird
         {
-            Debug.Log("Diamanten");                 // Kommwnteiert werden "Münze"
-            Destroy(other.gameObject);              // Zerstöre das Besagt Gameo
+           
             punkteManager.Hinzufügen();             // Programm von punkteManager Hinzufügen ausführen
             rb.linearVelocity = Vector2.zero;       // der rb soll gleich Vector2D Null [Stoppen]
             ui_Manager.ShowPanelWin(); 
         }
 
     }
-    public void NichtBewegen()
+    public void NichtBewegen()              // Die Funktion NichtBewegen()
     {
-        KannBewegen = false;
-        new Vector2(x: 0, y: 0);
+        KannBewegen = false;                // KannBewegen gleich false
+        new Vector2(x: 0, y: 0);            // new Vector2 gleich(x: 0, y: 0) 
     }
-    public void Bewegen()
+    public void Bewegen()                   // Die Funktion Bewegen()
     {
-        KannBewegen = true;
+        KannBewegen = true;                 // KannBewegen gleich true
     }
 }
 /*Für PfeilTasten Steuerung

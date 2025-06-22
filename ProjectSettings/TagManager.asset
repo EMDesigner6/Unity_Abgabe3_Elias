@@ -8,6 +8,7 @@ TagManager:
   - Boden
   - Punkte
   - Diamanten
+  - BodenChecker
   layers:
   - Default
   - TransparentFX
